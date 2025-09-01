@@ -1,3 +1,21 @@
+exeutemany
+
+https://stackoverflow.com/questions/46543436/speeding-bulk-insert-into-mysql-with-python
+
+так давай думать. А что вообще этот метод принимает?
+query = 'INSERT INTO table_name(column,column_1,column_2,column_3)
+VALUES(%s, %s, %s, %s)'                                                         
+
+csv_data = csv.reader(file('file_name'))
+
+my_data = []
+for row in csv_data:
+     my_data.append(tuple(row))
+
+cursor.executemany(query, my_data)
+
+
+
 Шаг 1: вспомнить, как подключить IDE к гитхабу
 
 А если серьезно, мне нужно держать фокус на нужных инструментах. Если меня занесло в данные, то надо продолжать работать с данными.
@@ -5,7 +23,12 @@
 
 Хранение данных:
 * Я сохраню все в базу MySql, чтобы у меня на ней формально было больше проектов
-* Какие бессмысленные данные я буду собирать? user_name, email, source, timestamp
+* connector самый простой, из книжки "Знакомьтесь, Питон" - я посмотрела видео про Airflow, там автор и коннектится через него, а я сейчас не готова подключать еще один незнакомый инструмент... все же, на следующем этапе
+* Какие бессмысленные данные я буду собирать? user_name, email, source, pipe_time
+
+Парсинг данных у мужика с AirFlow:
+Он берет данные из полученного с API json и парсит их во временный файл,
+что-то типа csv, но с табуляцией ... а потом делает bulk_load из библиотеки AirFlow
 
 Что я хочу сделать?
 
