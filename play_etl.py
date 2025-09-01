@@ -1,5 +1,6 @@
 # This is a sample Python script.
 import requests
+import openpyxl
 import pandas
 import mysql.connector
 import pendulum
@@ -81,11 +82,22 @@ def run_pipeline():
         for index, row in csv_data.iterrows():
             row_tuple = (f"{row['user_name']}", f"{row['email']}", 'csv(accountants)', datetime.now())
             csv_cursor.execute(sql_insert_all_emails, row_tuple)
-        db_connect.commit() # хотя курсор закрывался, в коммит уходят и данные из url
+        #db_connect.commit() # хотя курсор закрывался, в коммит уходят и данные из url
         csv_cursor.close()
     except Exception as err:
         print("csv error: ", err)
 
+    # *********** XLSX *****************
+    try:
+        xl_data = pandas.read_excel('data/Pets.xlsx', header=1)
+        xl_cursor = db_connect.cursor()
+        for index, row in xl_data.iterrows() :
+            row_tuple = (f"{row['owner_name']}", f"{row['email']}", 'xlsx(pet owners)', datetime.now())
+            xl_cursor.execute(sql_insert_all_emails, row_tuple)
+        db_connect.commit()
+        xl_cursor.close()
+    except Exception as err :
+        print(err)
 
 
 
