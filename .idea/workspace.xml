@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86cc49f7-2a85-44e9-ba64-0dac2045b9e5" name="Changes" comment="inserted data from url to db">
+    <list default="true" id="86cc49f7-2a85-44e9-ba64-0dac2045b9e5" name="Changes" comment="read data from csv, insert it into db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/accountants.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/accountants.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/play_etl.py" beforeDir="false" afterPath="$PROJECT_DIR$/play_etl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,13 +123,22 @@
       <option name="project" value="LOCAL" />
       <updated>1756712829617</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="read data from csv, insert it into db">
+      <option name="closed" value="true" />
+      <created>1756718233680</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756718233680</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
     <MESSAGE value="got data from url" />
     <MESSAGE value="inserted data from url to db" />
-    <option name="LAST_COMMIT_MESSAGE" value="inserted data from url to db" />
+    <MESSAGE value="read data from csv, insert it into db" />
+    <option name="LAST_COMMIT_MESSAGE" value="read data from csv, insert it into db" />
   </component>
 </project>
