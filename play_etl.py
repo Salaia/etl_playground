@@ -60,20 +60,31 @@ def run_pipeline():
         # Parse the JSON response into a Python dictionary or list
         data = response.json()
         try:
-            sql_cursor = db_connect.cursor()
+            url_cursor = db_connect.cursor()
             for row in data:
                 row_tuple = (f"{row['name']}", f"{row['email']}", 'url(librarian)', datetime.now())
-                sql_cursor.execute(sql_insert_all_emails, row_tuple)
-            db_connect.commit()
+                url_cursor.execute(sql_insert_all_emails, row_tuple)
+            #db_connect.commit()
+            url_cursor.close()
         except Exception as err :
             print(err)
-        finally:
-            sql_cursor.close()
+        #finally:
+            #db_connect.close()
     else:
         print(f"Error: Unable to retrieve data. Status code: {response.status_code}")
         print(response.text)  # Print the error message if available
 
-
+    # ******* CSV ****************
+    try:
+        csv_data = pandas.read_csv('data/accountants.csv', header=0)
+        csv_cursor = db_connect.cursor()
+        for index, row in csv_data.iterrows():
+            row_tuple = (f"{row['user_name']}", f"{row['email']}", 'csv(accountants)', datetime.now())
+            csv_cursor.execute(sql_insert_all_emails, row_tuple)
+        db_connect.commit() # хотя курсор закрывался, в коммит уходят и данные из url
+        csv_cursor.close()
+    except Exception as err:
+        print("csv error: ", err)
 
 
 
